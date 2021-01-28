@@ -55,6 +55,11 @@ RUN chmod +x ./entrypoint.sh
 # Set the owner of the files in AIRFLOW_HOME to the user airflow
 RUN chown -R airflow: ${AIRFLOW_HOME}
 
+# Set root password
+USER root
+
+RUN echo 'root:rootpwd' | chpasswd
+
 # Set the username to use
 USER airflow
 
