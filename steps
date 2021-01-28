@@ -1,0 +1,11 @@
+1.> Build Image
+docker build --tag airflow .
+
+2.> Run Image
+docker run --name my_airflow -it -d -p 8181:8181 --mount type=bind,source=/Users/andrewzhou/Oreilly/airflow/dags/my_dag.py,target=/usr/local/airflow/dags/my_dag.py airflow
+
+3.> Check Contain
+docker ps
+
+4.> Verify DAG in Container 
+docker exec -it my_airflow ls /usr/local/airflow/dags
